@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>我的待办事项</title>
+  <style>
+    body {
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    #inputBox {
+      width: 260px;
+      padding: 8px;
+      font-size: 16px;
+    }
+    #addBtn {
+      margin-left: 8px;
+      padding: 8px 14px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #list {
+      margin-top: 20px;
+      width: 320px;
+    }
+    .item {
+      padding: 6px 0;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>我的待办事项</h1>
+  <div>
+    <input id="inputBox" type="text" placeholder="请输入待办事项" />
+    <button id="addBtn">添加</button>
+  </div>
+  <div id="list"></div>
+
+  <script>
+    const input = document.getElementById("inputBox");
+    const addBtn = document.getElementById("addBtn");
+    const list = document.getElementById("list");
+
+    addBtn.addEventListener("click", () => {
+      const text = input.value.trim();
+      if (!text) return;
+      const div = document.createElement("div");
+      div.className = "item";
+      div.textContent = text;
+      list.appendChild(div);
+      input.value = "";
+      input.focus();
+    });
+  </script>
+</body>
+</html>
